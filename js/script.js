@@ -4,7 +4,7 @@ function myLoop() {
   var split = $("#text").val().split(/\s+/);
   setTimeout(function() {
     var currentWord = split[i];
-    $("div").append('<audio autoplay="autoplay" controls="controls" class="' + i + '">  <source       src="http://ssl.gstatic.com/dictionary/static/sounds/de/0/' + currentWord + '.mp3" />  </audio>');
+    $("div").append('<audio autoplay="autoplay" controls="controls" class="' + i + '"><source src="http://ssl.gstatic.com/dictionary/static/sounds/de/0/' + currentWord + '.mp3" /></audio>');
     i++;
     if (i < split.length) {
       myLoop();
