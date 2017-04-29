@@ -53,6 +53,7 @@ body{
   padding:10px;
   border-radius:3px;
   font-size:13px;
+  line-height:40px;
 }
 #copy-url{
   background-color:white;
