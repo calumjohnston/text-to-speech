@@ -60,7 +60,10 @@ $('#save').on('click', function() {
 function fireModal(){
     $("#share-link").html('<a href="' + window.location.href +'">'+ window.location.href+'</a>');
     $(".modal").fadeIn("fast");
-  $('#close',"").on('click', function() {
+  $('#close').on('click', function() {
+    $(".modal").fadeOut("fast");
+  });
+  $('.modal').on('click', function() {
     $(".modal").fadeOut("fast");
   });
 }
