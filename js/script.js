@@ -1,12 +1,12 @@
+
 var iteration = 0;
 
 function playAudio() {
   var split = $("#text").val().split(/ +/);
-  console.log(split);
+  if(split != ''){
   setTimeout(function() {
     var currentWord = split[iteration];
-    console.log(currentWord);
-    $("div").append('<audio autoplay="autoplay" controls="controls" class="' + iteration + '"><source src="http://ssl.gstatic.com/dictionary/static/sounds/de/0/' + currentWord + '.mp3" /></audio>');
+    $("div.audio-hidden").append('<audio autoplay="autoplay" controls="controls" class="' + iteration + '"><source src="http://ssl.gstatic.com/dictionary/static/sounds/de/0/' + currentWord + '.mp3" /></audio>');
     iteration++;
 
     if (iteration < split.length) {
@@ -15,37 +15,48 @@ function playAudio() {
       iteration = 0;
     }
   }, 420)
+  }
 }
-
+//play audio on click
 $('#listen').on('click', function() {
   playAudio();
 });
 
+//share button not lit unless it has content
+$(document).ready(function(){
+    $('#save').attr('disabled',true);
+    $('input#text').keyup(function(){
+        if($(this).val().length !=0){
+            $('#save').attr('disabled', false);
+            $('#save').removeClass("disabled"); 
+          }
+        else{
+            $('#save').attr('disabled',true);
+            $('#save').addClass("disabled"); 
+            }
+    });
+});
 
-//On click of Save button, store words in URL
+//On click of Share button, store words in URL
 $('#save').on('click', function() {
-  var words = $("#text").val().split(/ +/);
-  var wordString= "";
-  for (var i = 0; i < words.length; i++) {
-    if (i==0){
-      var wordString = wordString + words[i];
-    }
-    else{
-      var wordString = wordString + "+" + words[i];
-    }
-    window.history.pushState('Saved Text', 'Title', '?w=' + wordString);
-    //trigger modal
-    fireModal();
-  };
-  
+  if($("input#text").val() != ''){
+    var words = $("#text").val().split(/ +/);
+    var wordString= "";
+    for (var i = 0; i < words.length; i++) {
+      if (i==0){
+        var wordString = wordString + words[i];
+      }
+      else{
+        var wordString = wordString + "+" + words[i];
+      }
+      window.history.pushState('Saved Text', 'Title', '?w=' + wordString);
+      //trigger modal
+      fireModal();
+    };
+  }
 });
 
-$('a').bind('click', function(e){
-  e.preventDefault();
-});
-
-//Modal
-
+//Share Button - Launch modal
 function fireModal(){
     $("#share-link").html('<a href="' + window.location.href +'">'+ window.location.href+'</a>');
     $(".modal").fadeIn("fast");
@@ -53,7 +64,6 @@ function fireModal(){
     $(".modal").fadeOut("fast");
   });
 }
-
 
 //getParametersFromUrl - so we dont need php
 
@@ -72,22 +82,28 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-
 //get words from URL, put them into input box
-var words = getUrlParameter('w');
-words = words.split("+");
+if(getUrlParameter('w') != undefined){
+    //buggy setTimeout(function(){ playAudio(); }, 400);
+    var words = getUrlParameter('w').split("+");
+    for(i=0; i<words.length; i++){
+      $("input#text").val(function() {
+        if(i==0){
+          return this.value + words[i];
 
-for(i=0;i<words.length;i++){
-  $("input#text").val(function() {
-    if(i==0){
-      return this.value + words[i];
+        }
+        else{
+          return this.value + " " + words[i];
+        }
+
+      });
+       
     }
-    else{
-      return this.value + " " + words[i];
-    }
-  });
-   
+
 }
+
+//copy to clipboard with clipboard.js
+new Clipboard('#copy-url');
 
 
 //Enter Key Listen

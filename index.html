@@ -5,7 +5,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+
 	
 </head>
 <body>
@@ -15,15 +17,16 @@
     <p id="share-title">Share link<span id="close">&times;</span></p>
     <div class="share-info">
     	<span id="share-link"></span>
-    	<!--<button id="copy-url">Copy to Clipboard</button>-->
+    	<button id="copy-url" data-clipboard-target="#share-link">Copy to Clipboard</button>
     </div>
   </div>
 </div>
+
 <div class="wrapper">
 <input type="text" id="text" placeholder="Type your text">
 <button id="listen">Listen</button>
-<button id="save">Share</button>
-<div></div>
+<button id="save" class="disabled">Share</button>
+<div class="audio-hidden"></div>
 
 </div>
 

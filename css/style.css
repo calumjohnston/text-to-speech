@@ -27,14 +27,15 @@ body{
     background-color: rgba(0,0,0,0.4);
 }
 .modal-content {
+
   font-family:Open Sans;
   letter-spacing:1.2pt;
   background-color:white;
-    font-size:18px;
-    margin: 30vh auto; /* 15% from the top and centered */
-    border: 1px solid #888;
-    border-radius: 3px;
-    width: 600px;
+  font-size:18px;
+  margin: 30vh auto; /* 15% from the top and centered */
+  border-radius: 3px;
+  width: 600px;
+  
 }
 .modal-content p{
     margin:0;
@@ -46,21 +47,22 @@ body{
   border-bottom: 1px solid #FF7200;
 }
 .share-info{
-  margin:40px 20px 30px 20px;
+  display:flex;
+  flex-direction:column;
+  margin:20px 20px 30px 20px;
 }
 #share-link{
   background-color:#e5e5e5;
   padding:10px;
   border-radius:3px;
   font-size:13px;
-  line-height:40px;
 }
 #copy-url{
   background-color:white;
   color:#FF7200;
   width:160px;
   padding:5px 10px;
-  margin-top:30px;
+  margin:20px 0px;
   border:1px solid #FF7200;
 }
 #close {
@@ -107,6 +109,7 @@ button{
   color:#F8CD73;
   border:2px solid #F8CD73;
 }
+
 button:hover{
   cursor:pointer;
   transform:scale(1.1);
@@ -114,7 +117,13 @@ button:hover{
 button:focus,input {
   outline:0;
 }
-
+.disabled{
+  opacity:0.3!important;
+}
+.disabled:hover{
+  cursor:default;
+  transform:scale(1.0);
+}
 input,button{
   border-radius:3px;
   letter-spacing:1.2pt;
