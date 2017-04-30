@@ -4,6 +4,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Baloo|Open+Sans" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:url"           content="http://www.cheekytalk.me/" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="cheekytalk.me" />
+	<meta property="og:description"   content="make a robot say your dirty words" />
+	<meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://use.fontawesome.com/2fb84821fd.js"></script>
 	<script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
@@ -12,6 +17,12 @@
 	
 </head>
 <body>
+<script language="javascript">
+    function fbshareCurrentPage()
+    {window.open("https://www.facebook.com/sharer/sharer.php?u="+escape(window.location.href)+"&t="+document.title, '', 
+    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+    return false; }
+</script>
 
 <div class="modal hidden">
  <div class="modal-content">
@@ -25,6 +36,7 @@
   			<input type="checkbox" value="1" id="checkboxFiveInput" name="" />
 	  		<label for="checkboxFiveInput"></label>
 	  		<span>Make it hidden?</span>
+	  		<a href="javascript:fbshareCurrentPage()" target="_blank" alt="Share on Facebook">Facebook</a>
   		</div>
     </div>
   </div>
@@ -41,6 +53,8 @@
 </div>
 </div>
 <span id="logo">cheekytalk.me</span>
+
+
 <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
