@@ -205,6 +205,10 @@ span#logo{
   font-size:32px;
   line-height: 15px;
 }
-#fb-share{
-  
+#pika{
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  height:300px;
+  opacity:0.3;
 }
