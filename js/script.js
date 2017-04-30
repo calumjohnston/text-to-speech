@@ -143,7 +143,9 @@ if(getUrlParameter('hidden')){
   $('input#text').addClass("hidden-text");
   $('#listen').addClass("hidden-listen");
   $('#save').hide();
+  $('h1').hide();
   $('.wrapper').addClass("hidden-flexed");
+  $('.wrapper div').css("flex-direction", "column");
   $('#make-your-own').removeClass("hidden-button");
 }
 

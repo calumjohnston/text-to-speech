@@ -15,6 +15,9 @@ body{
   background-color:red;
   background-image:linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35));
 }
+.wrapper div{
+  display:flex;
+}
 .modal{
     display:none;
     position: fixed; /* Stay in place */
@@ -126,6 +129,7 @@ body{
 .wrapper{
   height:100vh;
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
   background-repeat:no-repeat;
@@ -190,4 +194,14 @@ button:focus,input {
 input,button{
   border-radius:3px;
   letter-spacing:1.2pt;
+}
+span#logo{
+  position:absolute;
+  margin:0;
+  padding:0;
+  bottom:30px;
+  right:30px;
+  font-family:'Baloo', sans-serif;
+  font-size:32px;
+  line-height: 15px;
 }
