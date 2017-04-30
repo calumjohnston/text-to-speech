@@ -151,6 +151,8 @@ input{
   width:220px;
   height:30px;
   line-height:0px;
+  font-size:14px;
+  letter-spacing: 0.5pt;
 }
 .hidden-listen{
   width:220px;
