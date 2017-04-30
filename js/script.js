@@ -148,7 +148,7 @@ if(getUrlParameter('hidden')){
 }
 
 $('#make-your-own').on('click', function() {
-    window.location.href = "/text-to-speech";
+    window.location.href = "/";
 });
 //make your own button
 //on click reload page
