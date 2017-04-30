@@ -43,13 +43,14 @@ $('#save').on('click', function() {
     var words = $("#text").val().split(/ +/);
     var wordString= "";
     for (var i = 0; i < words.length; i++) {
+
       if (i==0){
         var wordString = wordString + words[i];
       }
       else{
         var wordString = wordString + "+" + words[i];
       }
-      window.history.pushState('Saved Text', 'Title', '?w=' + wordString);
+      window.history.pushState('Saved Text', 'Title', '?w=' + window.btoa(wordString));
       //trigger modal
       fireModal();
     };
@@ -88,7 +89,8 @@ var getUrlParameter = function getUrlParameter(sParam) {
 //get words from URL, put them into input box
 if(getUrlParameter('w') != undefined){
     //buggy setTimeout(function(){ playAudio(); }, 400);
-    var words = getUrlParameter('w').split("+");
+    var words = window.atob(getUrlParameter('w'));
+    words = words.split("+");
     for(i=0; i<words.length; i++){
       $("input#text").val(function() {
         if(i==0){
