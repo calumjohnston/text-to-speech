@@ -34,7 +34,7 @@ body{
   font-size:18px;
   margin: 30vh auto; /* 15% from the top and centered */
   border-radius: 3px;
-  width: 600px;
+  max-width: 600px;
   
 }
 .modal-content p{
@@ -49,13 +49,19 @@ body{
 .share-info{
   display:flex;
   flex-direction:column;
-  margin:20px 20px 30px 20px;
+  margin:20px 20px 0px 20px;
 }
 #share-link{
   background-color:#e5e5e5;
   padding:10px;
   border-radius:3px;
   font-size:13px;
+}
+.share-actions{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  margin:0px 40px 30px 20px;
 }
 #copy-url{
   background-color:white;
@@ -64,6 +70,44 @@ body{
   padding:5px 10px;
   margin:20px 0px;
   border:1px solid #FF7200;
+}
+.checkboxFive {
+  margin: 25px 50px;
+  position: relative;
+}
+.checkboxFive span{
+  font-size:13px;
+  padding-left:10px;
+}
+.checkboxFive label {
+  cursor: pointer;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: -5px;
+  left: 0;
+  background: #eee;
+  border:1px solid #ddd;
+}
+.checkboxFive label:after {
+  opacity: 0.1;
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 5px;
+  background: transparent;
+  top: 11px;
+  left: 12px;
+  border: 3px solid #333;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+}
+.checkboxFive label:hover::after {
+  opacity: 0.5;
+}
+.checkboxFive input[type=checkbox]:checked + label:after {
+  opacity: 1;
 }
 #close {
     color: #aaa;
@@ -94,6 +138,23 @@ input{
   padding:15px;
   font-size:18px;
   margin-right:20px;
+}
+.hidden-flexed{
+  display:flex;
+  flex-direction:column;
+}
+.hidden-text, .hidden-button{
+  display:none;
+}
+#make-your-own{
+  margin-top:20px;
+  width:220px;
+  height:30px;
+  line-height:0px;
+}
+.hidden-listen{
+  width:220px;
+  height:80px;
 }
 button{
   background-color:#CD5153;

@@ -37,6 +37,8 @@ $(document).ready(function(){
     });
 });
 
+ var prev_url;
+
 //On click of Share button, store words in URL
 $('#save').on('click', function() {
   if($("input#text").val() != ''){
@@ -50,12 +52,12 @@ $('#save').on('click', function() {
       else{
         var wordString = wordString + "+" + words[i];
       }
-      window.history.pushState('Saved Text', 'Title', '?w=' + window.btoa(wordString));
-      //trigger modal
-      fireModal();
     };
-  }
+    window.history.pushState('Saved Text', 'Title', '?w=' + window.btoa(wordString));
+  } 
 });
+
+
 
 //Share Button - Launch modal
 function fireModal(){
@@ -63,10 +65,9 @@ function fireModal(){
     $(".modal").fadeIn("fast");
   $('#close').on('click', function() {
     $(".modal").fadeOut("fast");
+     $('#checkboxFiveInput').removeAttr('checked');
   });
-  $('.modal').on('click', function() {
-    $(".modal").fadeOut("fast");
-  });
+
 }
 
 //getParametersFromUrl - so we dont need php
@@ -85,6 +86,14 @@ var getUrlParameter = function getUrlParameter(sParam) {
         }
     }
 };
+
+$('#save').on('click', function() {
+  fireModal();
+  if(getUrlParameter('hidden') != "true"){
+    prev_url = window.location.href;
+  }
+  checkBoxChecked();
+});
 
 //get words from URL, put them into input box
 if(getUrlParameter('w') != undefined){
@@ -109,6 +118,40 @@ if(getUrlParameter('w') != undefined){
 
 //copy to clipboard with clipboard.js
 new Clipboard('#copy-url');
+
+
+//if hidden checkbox is checked
+function checkBoxChecked() {
+  $('#checkboxFiveInput').change(function() {
+  
+    var local = prev_url;
+     if($(this).is(':checked')){
+                $("#share-link").html('<a href="' + window.location.href + '&hidden' +'">'+ window.location.href + '&hidden' + '</a>');
+              }
+            else
+                {
+                    $("#share-link").html('<a href="' + prev_url +'">'+ prev_url +'</a>');
+    }    
+  });
+
+};
+
+//if getUrlParameter('hidden') != true
+//remove input box - make play button centered
+//add make your own button
+if(getUrlParameter('hidden')){
+  $('input#text').addClass("hidden-text");
+  $('#listen').addClass("hidden-listen");
+  $('#save').hide();
+  $('.wrapper').addClass("hidden-flexed");
+  $('#make-your-own').removeClass("hidden-button");
+}
+
+$('#make-your-own').on('click', function() {
+    window.location.href = "/text-to-speech";
+});
+//make your own button
+//on click reload page
 
 
 //Enter Key Listen
