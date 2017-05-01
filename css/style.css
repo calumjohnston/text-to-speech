@@ -194,6 +194,7 @@ button:focus,input {
 input,button{
   border-radius:3px;
   letter-spacing:1.2pt;
+  text-transform:lowercase;
 }
 span#logo{
   position:absolute;
