@@ -6,6 +6,7 @@ function playAudio() {
   if(split != ''){
   setTimeout(function() {
     var currentWord = split[iteration];
+    currentWord = currentWord.toLowerCase();
     $("div.audio-hidden").append('<audio autoplay="autoplay" controls="controls" class="' + iteration + '"><source src="http://ssl.gstatic.com/dictionary/static/sounds/de/0/' + currentWord + '.mp3" /></audio>');
     iteration++;
 
