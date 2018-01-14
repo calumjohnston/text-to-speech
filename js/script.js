@@ -7,7 +7,7 @@ function playAudio() {
   setTimeout(function() {
     var currentWord = split[iteration];
     currentWord = currentWord.toLowerCase();
-    $("div.audio-hidden").append('<audio autoplay="autoplay" controls="controls" class="' + iteration + '"><source src="http://ssl.gstatic.com/dictionary/static/sounds/de/0/' + currentWord + '.mp3" /></audio>');
+    $("div.audio-hidden").append('<audio autoplay="autoplay" controls="controls" class="' + iteration + '"><source src="http://ssl.gstatic.com/dictionary/static/sounds/20160317/' + currentWord + '--_gb_1.mp3" /></audio>');
     iteration++;
 
     if (iteration < split.length) {
@@ -15,7 +15,7 @@ function playAudio() {
     } else if (iteration >= split.length || currentWord == undefined) {
       iteration = 0;
     }
-  }, 420)
+  }, 550)
   }
 }
 //play audio on click
